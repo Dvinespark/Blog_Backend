@@ -1,7 +1,11 @@
-from django.urls import path
-from .views import index
+from django.urls import path, include
+from . import views
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('languages', views.LanguageView)
 
 
 urlpatterns = [
-    path('', index, name='index')
+    path('', include(router.urls))
 ]

@@ -1,7 +1,13 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
+from .serializers import LanguageSerializer
+from rest_framework import viewsets
+from .models import Language
+
 # Create your views here.
 
 
-def index(request):
-    return HttpResponse("This is just a beggining...")
+class LanguageView(viewsets.ModelViewSet):
+    queryset = Language.objects.all()
+    serializer_class = LanguageSerializer
+
